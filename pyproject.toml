@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "file-generator-converter"
+version = "0.1.0"
+description = ""
+authors = ["Aloec"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pre-commit = "^4.5.1"
+black = "^26.1.0"
+mypy = "^1.19.1"
+flake8 = "^7.3.0"
+isort = "^8.0.0"
+bandit = "^1.9.4"
+pylint = "^4.0.5"
+pytest = "^9.0.2"
+docformatter = "^1.7.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
