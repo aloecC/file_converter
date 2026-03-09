@@ -17,14 +17,24 @@ class ReportRequest(models.Model):
         ("FAILED", "Ошибка"),
     ]
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="report_requests", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="report_requests",
+        on_delete=models.CASCADE,
+    )
 
     uploaded_file = models.ForeignKey(
-        "files.UploadedFile", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Загруженный файл"
+        "files.UploadedFile",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Загруженный файл",
     )
 
     parameters = models.JSONField(
-        blank=True, null=True, verbose_name="Параметры, если загрузки файла нет (например, период, фильтры)"
+        blank=True,
+        null=True,
+        verbose_name="Параметры, если загрузки файла нет (например, период, фильтры)",
     )
 
     error_message = models.TextField(null=True, blank=True)
@@ -34,7 +44,10 @@ class ReportRequest(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="PENDING")
 
     output_file = models.FileField(
-        upload_to="reports/%Y/%m/%d/", blank=True, null=True, verbose_name="Файл результата"
+        upload_to="reports/%Y/%m/%d/",
+        blank=True,
+        null=True,
+        verbose_name="Файл результата",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

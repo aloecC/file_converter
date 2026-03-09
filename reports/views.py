@@ -51,6 +51,6 @@ class ReportRequestViewSet(viewsets.ModelViewSet):
                 "status": report_request.status,
                 "task_id": report_request.task_id,
                 "error_message": report_request.error_message,
-                "output_file": report_request.output_file.url if report_request.output_file else None,
+                "output_file": (report_request.output_file.url if report_request.output_file else None),
             }
         )

@@ -15,7 +15,11 @@ class UploadedFile(models.Model):
     """Модель для оригиналов файлов."""
 
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, related_name="uploaded_files"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="uploaded_files",
     )
 
     file = models.FileField(upload_to="uploads/")
