@@ -72,14 +72,22 @@ jobs:
 
             -   name: Run Migrations
                 env:
-                    DATABASE_URL: postgres://user:password@localhost:5432/test_db
+                    POSTGRES_DB: test_db
+                    POSTGRES_USER: user
+                    POSTGRES_PASSWORD: password
+                    POSTGRES_HOST: 127.0.0.1
+                    POSTGRES_PORT: 5432
                     SECRET_KEY: temporary-secret-key
                 run: |
                     poetry run python manage.py migrate
 
             -   name: Run Tests
                 env:
-                    DATABASE_URL: postgres://user:password@localhost:5432/test_db
+                    POSTGRES_DB: test_db
+                    POSTGRES_USER: user
+                    POSTGRES_PASSWORD: password
+                    POSTGRES_HOST: 127.0.0.1
+                    POSTGRES_PORT: 5432
                     REDIS_URL: redis://localhost:6379/0
                     SECRET_KEY: temporary-secret-key
                 run: |

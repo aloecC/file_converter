@@ -79,11 +79,11 @@ CORS_ALLOW_ALL_ORIGINS = False
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("NAME"),
-        "USER": os.getenv("USER"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "HOST": os.getenv("HOST"),
-        "PORT": os.getenv("PORT"),
+        "NAME": os.getenv("POSTGRES_DB", "test_db"),
+        "USER": os.getenv("USER", "user"),
+        "PASSWORD": os.getenv("PASSWORD", "password"),
+        "HOST": os.getenv("HOST", "127.0.0.1"),
+        "PORT": os.getenv("PORT", "5432"),
     }
 }
 
