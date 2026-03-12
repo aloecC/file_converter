@@ -7,8 +7,8 @@ from django.db import models
 
 def upload_to(instance, filename):
     ext = os.path.splitext(filename)[1]
-    filename = f"{uuid.uuid4()}{ext}"
-    return os.path.join("uploads", filename)
+    filename_uuid = str(uuid.uuid4()).replace("-", "")
+    return os.path.join("uploads", f"{filename_uuid}{ext}")
 
 
 class UploadedFile(models.Model):
@@ -22,7 +22,7 @@ class UploadedFile(models.Model):
         related_name="uploaded_files",
     )
 
-    file = models.FileField(upload_to="uploads/")
+    file = models.FileField(upload_to=upload_to)
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

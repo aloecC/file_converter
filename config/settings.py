@@ -3,10 +3,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -20,8 +20,9 @@ DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
 
+if os.getenv("DJANGO_ENV") == "test":
+    load_dotenv(BASE_DIR / "config" / ".env.test", override=True)
 
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
